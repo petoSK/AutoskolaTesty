@@ -1,0 +1,122 @@
+test1
+@acbabcbbccacbaccbababcacbba
+1. Dať prednosť v jazde sa rozumie
+a)povinnosť účastníka cestnej premávky počínať si tak, aby ten, kto má prednosť v jazde, nemusel náhle zmeniť smer alebo rýchlosť jazdy,
+b)povinnosť účastníka cestnej premávky počínať si tak, aby ten, kto má prednosť v jazde, nemusel zmeniť smer jazdy, môže však zmeniť rýchlosť jazdy,
+c)povinnosť účastníka cestnej premávky počínať si tak, aby ten, kto má prednosť v jazde, nemusel zmeniť rýchlosť jazdy, môže však zmeniť smer jazdy.
+2. Motorové vozidlo musí mať počas jazdy rozsvietené
+a)svetlá vo vnútri vozidla,
+b)diaľkové svetlomety,
+c)stretávacie svetlomety alebo im na roveň postavené osvetlenie.
+3. Vodič
+a)môže počas vedenia vozidla telefonovať alebo inak používať telefónny prístroj,
+b)nesmie počas vedenia vozidla telefonovať alebo inak používať telefónny prístroj okrem telefonovania s použitím systému voľné ruky,
+c)nesmie počas vedenia vozidla počúvať rádio.
+4. Ak jazdné pruhy nie sú na vozovke vyznačené, jazdným pruhom sa rozumie časť vozovky dovoľujúca jazdu vozidiel
+a)s troma a viacerými kolesami v jazdnom prúde za sebou,
+b)najmenej s dvoma kolesami v jazdnom prúde za sebou,
+c)len s dvoma kolesami v jazdnom prúde za sebou.
+5. Vodič predchádzaného vozidla nesmie
+a)okrem zvyšovania rýchlosti jazdy nijako brániť predchádzaniu,
+b)zvyšovať rýchlosť jazdy ani inak brániť predchádzaniu,
+c)znižovať rýchlosť jazdy.
+6. Vodič smie jazdiť len primeranou rýchlosťou, aby bol schopný zastaviť vozidlo na vzdialenosť
+a)20 m, na diaľnici a na rýchlostnej ceste 50 m,
+b)30 m,
+c)na ktorú má rozhľad.
+7. Vodič odbočujúci vľavo je povinný dať prednosť v jazde
+a)len protiidúcim vozidlám,
+b)protiidúcim motorovým vozidlám i nemotorovým vozidlám a električkám idúcim v oboch smeroch a chodcom prechádzajúcim cez vozovku,
+c)len protiidúcim motorovým vozidlám.
+8. Ak vodič, ktorý chce zastaviť alebo stáť, zachádza na okraj cesty alebo chodníka,
+a)nie je povinný dávať znamenie o zmene smeru jazdy,
+b)je povinný dávať znamenie o zmene smeru jazdy,
+c)je povinný dávať znamenie o zmene smeru jazdy len v obci.
+9. Účastník dopravnej nehody
+a)nesmie urobiť žiadne opatrenia na záchranu osoby, ak by to bolo na ujmu vyšetrenia dopravnej nehody,
+b)je povinný umožniť obnovenie cestnej premávky len vtedy, ak dopravnú nehodu zavinil,
+c)je povinný urobiť potrebné opatrenia na záchranu osoby alebo majetku ohrozeného dopravnou nehodou.
+10. Prerušované žlté svetlo použité samostatne alebo v spojení s dopravnou značkou
+a)znamená povinnosť zastaviť vozidlo pred priechodom pre cyklistov,
+b)znamená povinnosť dať prednosť chodcom na priechode pre chodcov,
+c)upozorňuje na nevyhnutnosť dbať na zvýšenú opatrnosť.
+11. Úprava cestnej premávky vykonaná dopravnými značkami a dopravnými zariadeniami
+a)je nadradená všeobecnej úprave cestnej premávky,
+b)je nadradená všeobecnej úprave cestnej premávky len v obytnej zóne, pešej zóne a školskej zóne,
+c)nie je nadradená všeobecnej úprave cestnej premávky.
+12. Ak sa vodič motorového vozidla, ktoré je povinne vybavené bezpečnostným odevom, zdržiava na vozovke mimo vozidla počas núdzového státia, najmä pri prerušení jazdy pre chybu na vozidle alebo v dôsledku dopravnej nehody, je povinný
+a)umiestniť 20 m za vozidlo biele neoslňujúce svetlo bielej farby,
+b)bezodkladne privolať odťahovú službu,
+c)mať bezpečnostný odev oblečený.
+13. Na bicykli sa jazdí predovšetkým
+a)po chodníku,
+b)po cestičke pre cyklistov,
+c)po ľavej krajnici.
+14. Vozidlo sa považuje za technicky nespôsobilé na premávku na pozemných komunikáciách, ak
+a)sú na tej istej náprave použité rôzne pneumatiky,
+b)najnižší bod činnej svietiacej plochy obrysových svetiel je vyššie ako 350 mm nad rovinou vozovky,
+c)diaľkové svetlomety nie je možné prepnúť na obrysové svietidlá.
+15. Hĺbka hlavných drážok v stredovej časti povrchu dezénu pneumatiky, ktorý pokrýva približne tri štvrtiny šírky povrchu dezénu jazdnej plochy pneumatiky, nesmie byť menej ako
+a)u vozidla kategórie L1e 1,5 mm,
+b)u všetkých kategórií vozidiel 1,6 mm,
+c)u vozidla kategórie L1e 1,0 mm.
+16. Táto dopravná značka upozorňuje na
+#1_16
+a)železničné priecestie bez závor,
+b)kríženie cesty s električkovou koľajou,
+c)križovatku, kde nie je prednosť v jazde upravená značkami.
+17. Táto dopravná značka zakazuje
+#1_17
+a)vjazd motorovým aj nemotorovým vozidlám,
+b)vjazd vozidlám vyznačených druhov,
+c)predchádzanie vozidiel vyznačených druhov.
+18. Táto dopravná značka
+#1_18
+a)informuje o smere a vzdialenosti v kilometroch k vyznačenému cieľu (obci),
+b)prikazuje odbočiť vľavo,
+c)vyznačuje cestu s jednosmernou premávkou.
+19. Táto dopravná značka znamená:
+#1_19
+a)Smerová tabuľa pre cyklistov (s jedným cieľom),
+b)Smerová tabuľa ku kultúrnemu alebo turistickému cieľu,
+c)Smerová tabuľa k miestnemu cieľu.
+20. Táto dopravná značka
+#1_20
+a)informuje o názve rieky, pohoria, prírodnej rezervácie, kultúrnej a historickej pamiatky, časti obce, územia a podobne,
+b)je návesťou pred križovatkou,
+c)je smerovou tabuľou s diaľkovým cieľom.
+21. Táto dopravná značka znamená:
+#1_21
+a)Koniec viacerých zákazov,
+b)Koniec obce,
+c)Koniec obytnej zóny.
+22. Táto dodatková tabuľka vyznačuje
+#1_22
+a)vzdialenosť k miestu, od ktorého začína platiť značka, pod ktorou je tabuľka umiestnená,
+b)smer obchádzky,
+c)úsek, pre ktorý platí značka, pod ktorou je tabuľka umiestnená.
+23. Takéto označenie sa musí použiť na
+#1_23
+a)autobuse prepravujúcom deti,
+b)vyznačenie úseku cesty so zvýšeným pohybom detí (v blízkosti školských a predškolských zariadení, detských ihrísk a podobne),
+c)osobnom automobile prepravujúcom deti.
+24. Ako prvé vojde do križovatky
+#1_24
+a)zelené vozidlo,
+b)modré vozidlo,
+c)červené vozidlo.
+25. Ak má policajt pravú ruku predpaženú a ľavú upaženú, znamená to „Stoj!” pre
+#1_25
+a)vodiča zeleného vozidla,
+b)vodiča červeného a vodiča žltého vozidla,
+c)chodcov prechádzajúcich za chrbtom policajta.
+26. Vaše vozidlo prejde cez križovatku ako
+#1_26
+a)prvé,
+b)posledné,
+c)druhé.
+27. Vozidlá prejdú cez križovatku v tomto poradí:
+#1_27
+a)1. električka, 2. zelené, 3. modré, 4. žlté, 5. vaše vozidlo,
+b)1. zelené, 2. električka, 3. modré, 4. žlté, 5. vaše vozidlo,
+c)1. modré, 2. zelené, 3. žlté, 4. vaše vozidlo, 5. električka.
