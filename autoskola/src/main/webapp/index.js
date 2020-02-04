@@ -9,7 +9,29 @@ var odpovede = [];
 var spravneOdpovede = [];
 var countDownDate = "";
 var time;
+var loggedUser="";
+document.getElementById("rnd").addEventListener("click", randomTest);
+document.getElementById("loginButton").addEventListener("click", login);
+document.getElementById("logoutButton").addEventListener("click", logout);
+document.getElementById("home").addEventListener("click", home);
 
+function home(){
+	checkCookies();
+	document.getElementById("username").value="";
+	document.getElementById("data").innerHTML="";
+	clearInterval(time);
+	document.getElementById("timer").innerHTML = "20m:00s";
+	
+	
+	
+	
+}
+function checkCookies(){
+	var adr="http://localhost:8080/autoskola/webapi/resources/listCookies"
+		var method="GET";
+	var str="";
+	sendRequest(str,method,adr);
+}
 function makeList() {
 	const myNode = document.getElementById("tests");
 	while (myNode.firstChild) {
@@ -27,9 +49,61 @@ function makeList() {
 	document.getElementsByClassName("testDropdown").onmouseover = function() {
 		this.style.backgroundColor = "#ddd";
 	}
-	
-	
 }
+/*function User(name) {
+	this.name = name;
+}*/
+
+function login(){	
+	
+	var s=document.getElementById("username");
+	
+	if(s.value.length>2){
+		console.log(s.value.length)
+	loggedUser=s.value;
+	console.log(loggedUser+"//"+s.value);
+	submitUsername(s.value);
+	document.getElementById("username").style.display="none";
+		document.getElementById("loginButton").style.display="none";
+			document.getElementById("welcome").style.display="block";
+			document.getElementById("welcome").innerHTML="Welcome "+loggedUser;
+	} else{
+	document.getElementById("username").value="";
+	document.getElementById("username").placeholder="min length=3";
+}
+}
+function logout(){
+	document.getElementById("username").style.display="initial"
+		document.getElementById("loginButton").style.display="initial"
+			document.getElementById("username").placeholder="enter user name";
+	document.getElementById("username").value="";
+	document.getElementById("welcome").style.display="none";
+	var adr="http://localhost:8080/autoskola/webapi/resources/userLogout"
+		var method="GET";
+	var str="";
+	sendRequest(str,method,adr);
+	
+}	
+	
+	function submitUsername(str) {
+	
+		var method="POST";
+		var adr="http://localhost:8080/autoskola/webapi/resources/userLogin";
+	
+			var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				obj = this.responseText;
+			}
+		}					
+		xhttp.open("POST", "http://localhost:8080/autoskola/webapi/resources/userLogin", true);
+		xhttp.setRequestHeader("Content-type", "text/plain");
+		//xhttp.setRequestHeader("Accept", "text/plain");
+		xhttp.send(str);
+		
+
+	}
+
 
 function eval() {
 	var hodnotenie="";
@@ -69,10 +143,10 @@ function eval() {
 	else document.getElementById("res").value = "Najprv zrob test ;)"
 }
 function timer() {
-	var distance = countDownDate - new Date().getTime();
-	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-	document.getElementById("timer").innerHTML = minutes + "m:" + seconds
+	var distance = countDownDate - new Date().getTime();            //ziskame aktualny cas
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));    //vypocitame aktualne minuty
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);             // //vypocitame aktualne sekundy
+	document.getElementById("timer").innerHTML = minutes + "m:" + seconds	
 			+ "s ";
 	
 	if(minutes==0&&seconds==0){
@@ -82,13 +156,38 @@ function timer() {
 		eval();
 	}
 }
-
+function resetTest(){
+	odpovede=[];                               //"zabudne" odpovede
+	getTest(test);
+	
+}
+function nextTest(){
+	
+	if(test==35) test=1;
+	else test=test+1;
+	getTest(test);
+}
+function previousTest(){
+	
+	if(test==1) test=35;
+	else test=test-1;
+	getTest(test);
+}
+function randomTest(){
+var r=Math.floor(Math.random() * 35);
+getTest(r);
+}
 function getTest(n) {
+	document.getElementById("timer").style.color="#E1E2E2";
+	document.getElementById("resTest").addEventListener("click", resetTest);
+	document.getElementById("next").addEventListener("click", nextTest);
+	document.getElementById("previous").addEventListener("click", previousTest);
+	
 	document.getElementById("res").style.visibility="hidden";
 	document.getElementById("result").style.height="70px";
 	spravneOdpovede = [];
 	document.getElementById("timer").innerHTML = "20m:00s";
-	countDownDate = new Date().getTime() + 12000;//00
+	countDownDate = new Date().getTime() + 12000;// 1200000ms == 20 minut
 	clearInterval(time);
 	time = setInterval(timer, 1000);
 
@@ -108,27 +207,31 @@ function getTest(n) {
 	var text = document.createTextNode("Test č. " + test);
 	newDiv.appendChild(text);
 	var element = document.getElementById("data").appendChild(newDiv);
-	sendRequest(test);
+	sendRequest(test,method,adr);
 }
 
-function sendRequest(str) {
 
+function sendRequest(str,method,adr) {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var obj = JSON.parse(this.responseText);
-			var x = JSON.parse(this.responseText);
-			writeTest(obj);
+		
+			if(test!="")displayTest(obj);
+			//if(Object.keys(obj).length==1)console.log(Object.keys(obj[0])+":"+Object.values(obj)+":"+Object.keys(obj).length);
+			//if(Object.keys(obj).length==1&&Object.keys(obj!="user"))console.log("no user");
+			//console.log(Object.keys(obj).length);
+			
 		}
 	}
+	
 	xhttp.open(method, adr, true);
 	xhttp.setRequestHeader("Content-type", "text/plain");
 	// xhttp.setRequestHeader("Accept", "text/plain");
 	xhttp.send(str);
-
 }
 
-function writeTest(obj) {
+function displayTest(obj) {
 
 	var i = 1;
 	var file = "";
@@ -210,7 +313,7 @@ function checkIfAnswered(q, o, id) {
 	if (odpovede[q - 1] == "") {
 		
 		odpovede[q - 1] = o;
-		document.getElementById(test + "_" + q + o).style.color = "#19FF19"; // nove
+		document.getElementById(test + "_" + q + o).style.color = "#19FF19"; // novej
 		// odpovedi
 		// dame
 		// zelenu
@@ -221,7 +324,7 @@ function checkIfAnswered(q, o, id) {
 		// dame
 		// povodnu
 		// farbu
-		document.getElementById(test + "_" + q + o).style.color = "#19FF19"; // nove
+		document.getElementById(test + "_" + q + o).style.color = "#19FF19"; // novej
 		// odpovedi
 		// dame
 		// zelenu
@@ -231,3 +334,6 @@ function checkIfAnswered(q, o, id) {
 	}
 	// console.log(odpovede);
 }
+
+
+

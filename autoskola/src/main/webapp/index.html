@@ -7,13 +7,31 @@
 </head>
 <body>
 	<div id="gridContainer">
-		<div id="header">header</div>
+		<div id="header">header
+			<div id="loginForm"class="formContainer">
+				<form class=form >
+				<div id="welcome"></div>
+				<input type="text" id="username"name="meno" placeholder="enter user name" >
+				<div id="logoutButton"class="button" >log out</div>
+				<div id="loginButton"class="button" >log in</div>
+  				
+  				</form>
+  			</div>
+  		
+  		</div>
 		<div id="menu">
 			menu
+			<ul>
+			<li><div id="home" class="button"><span> Home</span></div></li>
+			<li><div id="resTest" class="button"><span> Reset</span></div></li>
+			<li><div id="next" class="button"><span> Daľší</span></div></li>
+			<li><div id="previous" class="button"><span> Predchádzajúci</span></div></li>
+			<li><div id="rnd" class="button"><span> Náhodný</span></div></li>
+			</ul>
 
 
 			<div class="ddContainer">
-				<div class="button" id="dropbtn">Testy</div>
+				<div class="button" id="dropbtn"><span>Testy</span></div>
 				<div class="dropdown">
 					<div class="zoznamTestov" id="tests">
 						<div onclick="getTest(1)">1</div>
@@ -62,7 +80,7 @@
 				<div>
 					<form>
 						<div id="timer">20m:00s</div>
-						<div id="vyhodnotit" class="button" onclick="eval()">Výsledok</div>
+						<div id="vyhodnotit" class="button" onclick="eval()"><span>Výsledok</span></div>
 						<textarea name="result"  id="res"cols="20" rows="2"></textarea>
 						
 					</form>

@@ -7,14 +7,59 @@
 	font-style: normal;
 }
 
+ul{
+	margin-left:1em;
+	list-style-type: none;
+}
+li{
+	margin-bottom:15px;
+}
+
 body {
-	background: #1D2228; /*#002B33*/
+	background: #1D2228;  /*#002B33* #1D2228;*/
 	color: #B3F2FF;
 }
 
 .imgs {
 	max-width: 100%;
 	height: 100px;
+}
+#welcome{
+	display:block;
+	float:left;
+	background:#8ee4af;
+	height: 15px;
+	text-align: center;
+	vertical-align: middle;
+	line-height:15px;
+	width:150px;
+	display:none;
+	
+	padding:5px;
+	margin-top:5px;
+	border-radius: 25px;
+	-webkit-box-shadow: 2px 2px 7px 0px #000000;
+	box-shadow: 2px 2px 7px 0p #000000;
+}
+.formContainer{
+ margin-top:1em;
+  margin-right:10px;
+	float:right;
+	height:2em;
+}
+.formContainer input{
+	 border:  0px;
+	height:15px;
+	padding:5px;
+	margin-top:5px;
+	border-radius: 25px;
+	-webkit-box-shadow: 2px 2px 7px 0px #000000;
+	box-shadow: 2px 2px 7px 0p #000000;
+}
+
+.formContainer div{
+	margin-left:15px;
+	float:right;
 }
 
 .crossroad {
@@ -55,32 +100,32 @@ body {
 #gridContainer {
 	display: grid;
 	grid-template-columns: 10em auto;
-	grid-template-rows: 2em minmax(800px, auto) 1em 2em;
+	grid-template-rows: 4em minmax(800px, auto) 1em 2em;
 	grid-gap: 1em;
 }
 
 #header {
-	background: #E1E2E2;
+	background: #D1D2D2;
 	grid-column: 1/-1;
 	grid-row: 1/1;
 	color: #1D2228;
 }
 
 #menu {
-	background: #E1E2E2;
+	background: #D1D2D2;
 	grid-column: 1/1;
 	grid-row: 2/2;
 	color: #1D2228;
 }
 
 #main {
-	background: #1D2228;
+	background: #1D2228;/*;*/
 	grid-column: 2/2;
-	grid-row: 2/2;
+	grid-row: 2/2;bb
 }
 
 #footer {
-	background: #E1E2E2;
+	background: #D1D2D2;
 	grid-column: 1/-1;
 	grid-row: 4/-1;
 	color: #1D2228;
@@ -138,17 +183,29 @@ body {
 }
 
 .button {
+	cursor:default;
+	vertical-align: middle;
 	text-align: center;
 	padding: 5px;
 	display: block;
 	width: 100px;
-	background: #FB8122;
+	background: #52D1DC;
 	border-radius: 25px;
 	color: black;
 	height: 15px;
 	-webkit-box-shadow: 2px 2px 7px 0px #000000;
 	box-shadow: 2px 2px 7px 0p #000000;
 	margin-top: 5px;
+	line-height:15px;
+}
+
+
+.button span{
+	
+	text-align:center;
+	  margin: auto;
+  
+	
 }
 
 #result div, textarea {
@@ -181,7 +238,7 @@ body {
 	display: block;
 	position: fixed;
 	opacity: 0.9;
-	top: 4em;
+	top: 6em;
 	right: 0em;
 	background: #E1E2E2;
 	height: 70px;

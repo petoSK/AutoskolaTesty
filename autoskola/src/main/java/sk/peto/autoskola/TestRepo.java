@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyStore.ProtectionParameter;
 import java.sql.Blob;
@@ -24,12 +26,14 @@ import java.util.List;
 
 import javax.imageio.stream.FileImageInputStream;
 
+
 public class TestRepo {
+	 private static final long serialVersionUID = 1L;
 	Test nTest = new Test();
 	User u = new User();
 	ArrayList<Test> list = new ArrayList<>();
 	ArrayList<User> userList = new ArrayList<>();
-
+	String userN="";
 	final private String host = "jdbc:mysql://localhost:3306/";
 	final private String user = "root";
 	final private String password = "root";
@@ -240,5 +244,6 @@ public class TestRepo {
 			e.printStackTrace();
 		}
 	}
+
 
 }
