@@ -115,9 +115,22 @@ public class TestResource {
 		return tr.getTestfromDb(testNumber);
 	}
 	
+	@Path("saveResult")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void saveTestResult(TestResult res) {
+		System.out.println("saveTestResult");
+		tr.saveResulttoDb(res);
+	}
 	
-	
-	
-
+	@Path("getQuestion")
+	@POST
+	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public Otazka getQuestion(int i) {
+		
+		return tr.getOtazka(i);
+		
+	}
 	
 }

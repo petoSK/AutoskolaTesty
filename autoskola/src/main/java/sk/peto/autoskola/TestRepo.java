@@ -21,7 +21,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.imageio.stream.FileImageInputStream;
@@ -30,8 +32,11 @@ import javax.imageio.stream.FileImageInputStream;
 public class TestRepo {
 	 private static final long serialVersionUID = 1L;
 	Test nTest = new Test();
+	TestResult tr=new TestResult();
+	Otazka ot = new Otazka();
 	User u = new User();
 	ArrayList<Test> list = new ArrayList<>();
+	ArrayList<Otazka> o= new ArrayList<>();
 	ArrayList<User> userList = new ArrayList<>();
 	String userN="";
 	final private String host = "jdbc:mysql://localhost:3306/";
@@ -244,6 +249,62 @@ public class TestRepo {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	public void saveResulttoDb(TestResult res) {
+		int sql_err_count = 0;
+		LocalDateTime currentTime = LocalDateTime.now();
+		String dateToString=currentTime.getYear()+"-"+currentTime.getMonthValue()+"-"+currentTime.getDayOfMonth()+" "+
+				currentTime.getHour()+":"+currentTime.getMinute()+":"+currentTime.getSecond(); 
+		String query = "INSERT INTO autoskola.testresults(user,testn,points,passed,date) VALUES(?,?,?,?,?)";
+		int boolToInt=0;
+		if(res.getPassed())boolToInt=1;
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, res.getUser() ); // ziskame jeho clenske premenne
+			ps.setInt(2, res.getTest());
+			ps.setInt(3, res.getPoints());
+			
+			ps.setInt(4, boolToInt);
+			ps.setString(5, dateToString);  //sql datetime format:  2020-01-01 10:10:10
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			sql_err_count++;
+			System.out.println(e);
+			System.out.println("sql errors count: " + sql_err_count);
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	public Otazka getOtazka( int i) {
+		String query = "select * from autoskola.testy where otazka_id="+i; //otazka,moznost_a,moznost_b,moznost_c,answer
+		Otazka ot = new Otazka();
+		
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				ot.setOtazka_id(rs.getInt(1));
+				ot.setOtazka(rs.getString(2));
+				ot.setMoznostA(rs.getString(3));
+				ot.setMoznostB(rs.getString(4));
+				ot.setMoznostC(rs.getString(5));
+				ot.setOdpoved(rs.getString(6));
+				o.add(ot);
+			}
 
-
+		} catch (SQLException e) {
+			System.out.println(e);
+			e.printStackTrace();
+		}
+	 System.out.println(ot.getOtazka());
+	 System.out.println("\n"+ot.getOdpoved());
+		return ot;
+	
+	}
 }

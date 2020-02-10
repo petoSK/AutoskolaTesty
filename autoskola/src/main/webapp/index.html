@@ -7,11 +7,17 @@
 </head>
 <body>
 	<div id="gridContainer">
-		<div id="header">header
+		<div id="header">
+		
+		<div id="hamburger"><div id="bunTop" class="hb"> </div><div id="ham" class="hb"></div><div id="bunBtm" class="hb"></div></div><!-- -->
+			
+			
+			
 			<div id="loginForm"class="formContainer">
 				<form class=form >
 				<div id="welcome"></div>
 				<input type="text" id="username"name="meno" placeholder="enter user name" >
+				
 				<div id="logoutButton"class="button" >log out</div>
 				<div id="loginButton"class="button" >log in</div>
   				
@@ -19,14 +25,20 @@
   			</div>
   		
   		</div>
+  		<div class="topBanner">
+  		<div id="previous" class="button"><span> Predchádzajúci</span></div>
+  		<div id="next" class="button"><span> Daľší</span></div>
+		<div id="dobreZle" class="text"></div>
+  		
+  		</div>
 		<div id="menu">
-			menu
+		
 			<ul>
 			<li><div id="home" class="button"><span> Home</span></div></li>
 			<li><div id="resTest" class="button"><span> Reset</span></div></li>
-			<li><div id="next" class="button"><span> Daľší</span></div></li>
-			<li><div id="previous" class="button"><span> Predchádzajúci</span></div></li>
-			<li><div id="rnd" class="button"><span> Náhodný</span></div></li>
+			
+			<li><div id="rnd" class="button"><span> Náhodný test</span></div></li>
+			<li><div id="randomq" class="button"><span>Náhodné otázky</span></div></li>
 			</ul>
 
 
@@ -81,14 +93,14 @@
 					<form>
 						<div id="timer">20m:00s</div>
 						<div id="vyhodnotit" class="button" onclick="eval()"><span>Výsledok</span></div>
-						<textarea name="result"  id="res"cols="20" rows="2"></textarea>
+						<textarea readonly name="result"  id="res"cols="20" rows="2"></textarea>
 						
 					</form>
 				</div>
 			</div>
 			<div id="data"></div>
 		</div>
-		<div id="footer"></div>
+		<div id="footer"><div class="footerContent">footer content<div onclick="topFunction()" id="toTheTopBtn" class="button"title="Go to top">Top</div></div></div>
 		<!-- -->
 		<div id="res"></div>
 
