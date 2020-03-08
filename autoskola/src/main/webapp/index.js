@@ -13,12 +13,27 @@ var loggedUser="";
 var odpoved="";
 var dobre="0";
 var zle="0";
+var tOtazky=[];
+
 document.getElementById("rnd").addEventListener("click", randomTest);
 document.getElementById("loginButton").addEventListener("click", login);
 document.getElementById("logoutButton").addEventListener("click", logout);
 document.getElementById("home").addEventListener("click", home);
-document.getElementById("randomq").addEventListener("click", nahodneOtazky);
+document.getElementById("randomq").addEventListener("mouseenter", showOptions); // /("click",
+																				// nahodneOtazky)
+document.getElementById("randomq").addEventListener("mouseleave", hideOptions); 
 checkCookies();
+
+function showOptions(){
+	setTimeout(() => {  document.getElementById("vyberOtazku").style.display="block"; }, 600)
+	
+	
+}
+function hideOptions(){
+	
+		document.getElementById("vyberOtazku").style.display="none"; 
+	
+}
 
 function home(){
 	test="";
@@ -58,7 +73,7 @@ function otazka(id,q,a,b,c,o){
 }
 
 function getOneQuestion(i){
-	console.log("getOneQuestion"+i)
+	console.log("getOneQuestion "+i)
 	clearInterval(time);
 	document.getElementById("timer").innerHTML = "20m:00s";
 	var adr="http://localhost:8080/autoskola/webapi/resources/getQuestion"
@@ -123,7 +138,8 @@ function login(){
 		document.getElementById("loginButton").style.display="none";
 			document.getElementById("welcome").style.display="block";
 			document.getElementById("hamburger").style.display="grid";
-	//		document.getElementById("hamburger").addEventListener("mouseover", hamburgerMenu);
+	// document.getElementById("hamburger").addEventListener("mouseover",
+	// hamburgerMenu);
 			document.getElementById("welcome").innerHTML="Welcome "+loggedUser;
 			if(test!="") resetTest();
 	} else{
@@ -159,16 +175,24 @@ function logout(){
 		}					
 		xhttp.open(method, adr, true);
 		xhttp.setRequestHeader("Content-type", "text/plain");
-		/*xhttp.setRequestHeader("Accept", "application/json");*/
+		/* xhttp.setRequestHeader("Accept", "application/json"); */
 		xhttp.send(str);
 	}
 	
 function eval() {
 	var hodnotenie="";
-	if(test!=0){                                                              // 1-12 za 2 body
-	clearInterval(time);													// 13,14,15 za 1 bod
-	console.log(spravneOdpovede);											// 16-23 za 2 body
-	console.log(odpovede);													// 24-27 za 3 body
+	if(test!=0){                                                              // 1-12
+																				// za 2
+																				// body
+	clearInterval(time);													// 13,14,15
+																			// za 1
+																			// bod
+	console.log(spravneOdpovede);											// 16-23
+																			// za 2
+																			// body
+	console.log(odpovede);													// 24-27
+																			// za 3
+																			// body
 	var spravne=[];
 	var nespravne=[];
 	var dobreCoun=0;
@@ -203,9 +227,15 @@ function eval() {
 	else document.getElementById("res").value = "Najprv zrob test ;)"
 }
 function timer() {
-	var distance = countDownDate - new Date().getTime();            //ziskame aktualny cas
-	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));    //vypocitame aktualne minuty
-	var seconds = Math.floor((distance % (1000 * 60)) / 1000);             // //vypocitame aktualne sekundy
+	var distance = countDownDate - new Date().getTime();            // ziskame
+																	// aktualny
+																	// cas
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));    // vypocitame
+																				// aktualne
+																				// minuty
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);             // //vypocitame
+																			// aktualne
+																			// sekundy
 	document.getElementById("timer").innerHTML = minutes + "m:" + seconds	
 			+ "s ";
 	
@@ -218,7 +248,7 @@ function timer() {
 }
 function resetTest(){
 	console.log("reset odpovedi");
-	odpovede=[];                               //"zabudne" odpovede
+	odpovede=[];                               // "zabudne" odpovede
 	getTest(test);
 	
 }
@@ -235,6 +265,7 @@ function previousTest(){
 	getTest(test);
 }
 function randomTest(){
+	console.log("random test called")
 var r=Math.floor(Math.random() * 35);
 getTest(r);
 }
@@ -364,7 +395,7 @@ function logAnswer() {
 }
 
 function checkIfAnswered(q, o, id) {
-//	console.log("checkIfAnswered " + q + " " + o + " " + s)
+// console.log("checkIfAnswered " + q + " " + o + " " + s)
 	var e = false;
 	// for (var i = 0; i < 27; i++) {
 	if (odpovede[q - 1] == "") {
@@ -394,7 +425,7 @@ function checkIfAnswered(q, o, id) {
 
 mybutton = document.getElementById("toTheTopBtn");
 
-//When the user scrolls down 20px from the top of the document, show the button
+// When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -405,31 +436,76 @@ if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
 }
 }
 
-//When the user clicks on the button, scroll to the top of the document
+// When the user clicks on the button, scroll to the top of the document
 function topFunction() {
 document.body.scrollTop = 0; // For Safari
 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-function nahodneOtazky(cisloOtazky){
+function vyberOtazok(idO){
+
+	console.log("typ otazky "+idO);
+	var typOtazky=idO;
+	var s="";
+var checkBoxes=document.getElementsByClassName("otazkaInput");	
+for(var i=0;i<checkBoxes.length;i++){
+	checkBoxes[i].checked=false;	
+}
+	document.getElementById(typOtazky).checked=true;	
+nahodneOtazky(typOtazky);
+}
+
+function nahodneOtazky(typOtazky){
+	
 	var cisloOtazky=cisloOtazky;
+	  var b=0;
+	  var e=0;
 	dobre="0";
 	zle="0";
 	home();
 	document.getElementById("dobreZle").style.display="block";
+	
+	var znacky=true;
+	var krizovatky=true;
+	var zakon=true;
+	// logika pre vybratie otazky konkretneho typu (krizovatky,znacky,....) //id
+	// 1-945
+	// zakon za 2 body //1-12
+	// zakon za 1 bod //13 14 15
+	// znacky //16 17 18 19 20 21 22 23
+    // krizovatky //24 25 26 27
+	
+	switch(typOtazky){
+	case "zakon":{
+		tOtazky=[];
+		b=1;
+		e=15;
+	}
+	break;
+	case "znacky":{
+		tOtazky=[];
+		b=16;
+		e=23;
+	}
+	break;
+	case "krizovatky":{
+		tOtazky=[];
+		b=24;
+		e=27;
+	}
+	}
+	for(var i=1;i<946;i++){// pocet vsetkych otazok 946
+		if(i>=b&&i<=e){	
+	tOtazky.push(i)	;
+		}
+		if(i>e){
+			b=b+27;
+		e=e+27;
+	// console.log(tOtazky+"\n"+"\n"+tOtazky.length)
+		}
+	}
 	document.getElementById("dobreZle").innerHTML="dobre : "+dobre+" zle: "+zle;
-	
-	//loop pre dostanie otazky konkretneho typu na zaklade id otazky
-	//zakon za 2 body 
-	//1-12
-	//zakon za 1 bod
-	//13 14 15
-	//znacky
-	//16 17 18 19 20 21 22 23
-    //krizovatky
-	//24 25 26 27
-	
-	getOneQuestion(16);
+	nextq();
 }
 
 function displayQ(obj,i){
@@ -448,20 +524,26 @@ function displayQ(obj,i){
 	        elements[0].parentNode.removeChild(elements[0]);
 	    }
 	 
-	//document.getElementsByClassName("imgs").remove;
-	//document.getElementsByClassName("abc").remove;
-	//var el=document.getElementsByClassName("otazka");
-	//el.remove;
-	file = "images/" + "1" + "_" + i + ".png";
-	
-	//"next" button
+	// document.getElementsByClassName("imgs").remove;
+	// document.getElementsByClassName("abc").remove;
+	// var el=document.getElementsByClassName("otazka");
+	// el.remove;
+// console.log("otazka_id "+obj.otazka_id)
+// console.log("cislo testu "+Math.floor((obj.otazka_id/27)+1) )
+// console.log("cislo otazky "+obj.otazka_id%27)
+	   
+	  
+	  if(obj.otazka_id>27)  file = "images/" +  Math.floor((obj.otazka_id/27)+1) + "_" + obj.otazka_id%27 + ".png";     // cisloTestu_cisloOtazky.png
+	  else file = "images/" +  1 + "_" + obj.otazka_id + ".png";   
+	if(obj.otazka_id%27==0) file = "images/" +  Math.floor((obj.otazka_id/27)+1) + "_27.png"; 
+	  // "next" button
 	newDiv = document.createElement("div");
 	newDiv.setAttribute("class", "button");
 	newDiv.setAttribute("id", "nextQ");
 	text = document.createTextNode("next");
 	newDiv.appendChild(text);
 	element = document.getElementById("data").appendChild(newDiv);
-	
+	document.getElementById("nextQ").innerHTML="next ("+tOtazky.length+") ";
 	
 	newDiv = document.createElement("div");
 	newDiv.setAttribute("class", "otazka");
@@ -469,7 +551,9 @@ function displayQ(obj,i){
 	newDiv.appendChild(text);
 	element = document.getElementById("data").appendChild(newDiv);
 	
-	if (i >= 16) {
+	if ((obj.otazka_id>=16&&obj.otazka_id<=27) || obj.otazka_id%27 >= 16||obj.otazka_id%27 == 0) { 
+		
+		
 		var newImg = document.createElement("img");
 		newImg.setAttribute("src", file);
 		newImg.setAttribute("id", "img");
@@ -482,11 +566,8 @@ function displayQ(obj,i){
 			newImg.setAttribute("class", "imgs");
 		element.src = "images/" + test + "_" + i + ".png";
 		element = document.getElementById("data").appendChild(newImg);
+		
 	}
-	
-	
-	
-	
 	newDiv = document.createElement("div");
 	newDiv.setAttribute("class", "abc");
     text = document.createTextNode(obj.moznostA);
@@ -507,19 +588,18 @@ function displayQ(obj,i){
 	element = document.getElementById("data").appendChild(newDiv);
 
 	
-	
-/*	console.log(""+obj.otazka);
-	console.log("\n"+obj.moznostA);
-	console.log("\n"+obj.moznostB);
-	console.log("\n"+obj.moznostC);
-	console.log("\n"+obj.odpoved);*/
+	/*
+	 * console.log(""+obj.otazka_id); console.log("\n"+obj.otazka);
+	 * console.log("\n"+obj.moznostA); console.log("\n"+obj.moznostB);
+	 * console.log("\n"+obj.moznostC); console.log("\n"+obj.odpoved);
+	 */
 	
 	var items = document.getElementsByClassName("abc");
 	for (var j = 0; j < items.length; j++) {
 		items[j].addEventListener("click", checkAnswer);
 	}
 	
-	document.getElementById("nextQ").addEventListener("click",nextq)
+	 document.getElementById("nextQ").addEventListener("click",nextq)
 }
 
 
@@ -528,10 +608,10 @@ function displayQ(obj,i){
 
 function checkAnswer(ans){
 	
-//	console.log("check")
+// console.log("check")
 	console.log("tvoja odpoved: "+this.innerHTML.substring(0,1)+" :: Spravna odpoved: "+odpoved)
-	//80FF80
-	//document.getElementsByClassName("abc").style.backgroundColor="#1D2228";
+	// 80FF80
+	// document.getElementsByClassName("abc").style.backgroundColor="#1D2228";
 	var items = document.getElementsByClassName("abc");
 	for (var j = 0; j < items.length; j++) {
 		items[j].removeEventListener("click", checkAnswer);
@@ -540,20 +620,20 @@ function checkAnswer(ans){
 	}
 	
 	if(this.innerHTML.substring(0,1)==odpoved){
-		this.style.background="#008000"; //spravna odpoved - zelena
-		//console.log(this.className+"=zelena");
+		this.style.background="#008000"; // spravna odpoved - zelena
+		// console.log(this.className+"=zelena");
 	 dobre++;
 	}else{
 		this.style.background="#800000"; // nesparavna odpoved - cervena
-		//console.log(this.className+"=cervena");
+		// console.log(this.className+"=cervena");
 		console.log("o: "+odpoved);
 		zle++;
 		
-	/*	switch(odpoved){
-		case "a" :items[0].style.background="#FF9900";
-		case "b" :items[1].style.background="#99CCFF";
-		case "c" :items[2].style.background="#FF00FF";
-		}*/
+	/*
+	 * switch(odpoved){ case "a" :items[0].style.background="#FF9900"; case "b"
+	 * :items[1].style.background="#99CCFF"; case "c"
+	 * :items[2].style.background="#FF00FF"; }
+	 */
 	}
 	
 	
@@ -562,8 +642,13 @@ function checkAnswer(ans){
 }
 
 function nextq(){
-//	console.log("nextq");
-	getOneQuestion(Math.floor(Math.random() * 26)+1);
+	console.log("tOtazky.length: "+tOtazky.length)
+	var rnd=Math.floor(Math.random() * tOtazky.length);
+	
+	getOneQuestion(tOtazky[rnd]);
+	tOtazky.splice(rnd,1);
+	if(tOtazky.length==0) document.getElementById("data").innerHTML="dosli otazky :(";
+	
 }
 
 

@@ -8,99 +8,139 @@
 <body>
 	<div id="gridContainer">
 		<div id="header">
-		
-		<div id="hamburger"><div id="bunTop" class="hb"> </div><div id="ham" class="hb"></div><div id="bunBtm" class="hb"></div></div><!-- -->
+
+			<div id="hamburger">
+				<div id="bunTop" class="hb"></div>
+				<div id="ham" class="hb"></div>
+				<div id="bunBtm" class="hb"></div>
+			</div>
 			
-			
-			
-			<div id="loginForm"class="formContainer">
-				<form class=form >
-				<div id="welcome"></div>
-				<input type="text" id="username"name="meno" placeholder="enter user name" >
-				
-				<div id="logoutButton"class="button" >log out</div>
-				<div id="loginButton"class="button" >log in</div>
-  				
-  				</form>
-  			</div>
-  		
-  		</div>
-  		<div class="topBanner">
-  		<div id="previous" class="button"><span> Predchádzajúci</span></div>
-  		<div id="next" class="button"><span> Daľší</span></div>
-		<div id="dobreZle" class="text"></div>
-  		
-  		</div>
-		<div id="menu">
-		
-			<ul>
-			<li><div id="home" class="button"><span> Home</span></div></li>
-			<li><div id="resTest" class="button"><span> Reset</span></div></li>
-			
-			<li><div id="rnd" class="button"><span> Náhodný test</span></div></li>
-			<li><div id="randomq" class="button"><span>Náhodné otázky</span></div></li>
-			</ul>
 
 
-			<div class="ddContainer">
-				<div class="button" id="dropbtn"><span>Testy</span></div>
-				<div class="dropdown">
-					<div class="zoznamTestov" id="tests">
-						<div onclick="getTest(1)">1</div>
-						<div onclick="getTest(2)">2</div>
-						<div onclick="getTest(3)">3</div>
-						<div onclick="getTest(4)">4</div>
-						<div onclick="getTest(5)">5</div>
-						<div onclick="getTest(6)">6</div>
-						<div onclick="getTest(7)">7</div>
-						<div onclick="getTest(8)">8</div>
-						<div onclick="getTest(9)">9</div>
-						<div onclick="getTest(10)">10</div>
-						<div onclick="getTest(11)">11</div>
-						<div onclick="getTest(12)">12</div>
-						<div onclick="getTest(13)">13</div>
-						<div onclick="getTest(14)">14</div>
-						<div onclick="getTest(15)">15</div>
-						<div onclick="getTest(16)">16</div>
-						<div onclick="getTest(17)">17</div>
-						<div onclick="getTest(18)">18</div>
-						<div onclick="getTest(19)">19</div>
-						<div onclick="getTest(20)">20</div>
-						<div onclick="getTest(21)">21</div>
-						<div onclick="getTest(22)">22</div>
-						<div onclick="getTest(23)">23</div>
-						<div onclick="getTest(24)">24</div>
-						<div onclick="getTest(25)">25</div>
-						<div onclick="getTest(26)">26</div>
-						<div onclick="getTest(27)">27</div>
-						<div onclick="getTest(28)">28</div>
-						<div onclick="getTest(29)">29</div>
-						<div onclick="getTest(30)">30</div>
-						<div onclick="getTest(31)">31</div>
-						<div onclick="getTest(32)">32</div>
-						<div onclick="getTest(33)">33</div>
-						<div onclick="getTest(34)">34</div>
-						<div onclick="getTest(35)">35</div>
-					</div>
-				</div>
+
+			<div id="loginForm" class="formContainer">
+				<form class=form>
+					<div id="welcome"></div>
+					<input type="text" id="username" name="meno"
+						placeholder="enter user name">
+
+					<div id="logoutButton" class="button">log out</div>
+					<div id="loginButton" class="button">log in</div>
+
+				</form>
 			</div>
 
 		</div>
+	<!-- -->	<div class="topBanner">
+			<div id="previous" class="button">
+				<span> Predchádzajúci</span>
+			</div>
+			<div id="next" class="button">
+				<span> Daľší</span>
+			</div>
+			<div id="dobreZle" class="text"></div>
+
+		</div>	
+		<div id="menu">
+
+			<ul>
+				<li><div id="home" class="button">
+						<span> Home</span>
+					</div></li>
+				<li><div id="resTest" class="button">
+						<span> Reset</span>
+					</div></li>
+
+				<li><div id="rnd" class="button">
+						<span> Náhodný test</span>
+					</div></li>
+				<li><div id="randomq" class="button">
+						<span>Náhodné otázky</span>
+
+					<div id="vyberOtazku">
+							<form class="vyberOtazky" action="">
+								<br> <input type="checkbox" id="zakon" class="otazkaInput" name="typOtazky"
+									value="zakon" onclick="vyberOtazok(this.id)"> <label for="zakon">zakon</label><br>
+								<input type="checkbox" id="znacky" class="otazkaInput" name="typOtazky"
+									value="znacky" onclick="vyberOtazok(this.id)"> <label for="znacky">znacky</label><br>
+								<input type="checkbox" id="krizovatky" class="otazkaInput" name="typOtazky"
+									value="krizovatky" onclick="vyberOtazok(this.id)"> <label for="krizovatky">krizovatky</label>
+								
+							</form>
+						</div></div>
+					</li>
+
+				<li>
+					<div class="ddContainer">
+						<div class="button" id="dropbtn">
+							<span>Testy</span>
+						</div>
+						<div class="dropdown">
+							<div class="zoznamTestov" id="tests">
+								<div onclick="getTest(1)">1</div>
+								<div onclick="getTest(2)">2</div>
+								<div onclick="getTest(3)">3</div>
+								<div onclick="getTest(4)">4</div>
+								<div onclick="getTest(5)">5</div>
+								<div onclick="getTest(6)">6</div>
+								<div onclick="getTest(7)">7</div>
+								<div onclick="getTest(8)">8</div>
+								<div onclick="getTest(9)">9</div>
+								<div onclick="getTest(10)">10</div>
+								<div onclick="getTest(11)">11</div>
+								<div onclick="getTest(12)">12</div>
+								<div onclick="getTest(13)">13</div>
+								<div onclick="getTest(14)">14</div>
+								<div onclick="getTest(15)">15</div>
+								<div onclick="getTest(16)">16</div>
+								<div onclick="getTest(17)">17</div>
+								<div onclick="getTest(18)">18</div>
+								<div onclick="getTest(19)">19</div>
+								<div onclick="getTest(20)">20</div>
+								<div onclick="getTest(21)">21</div>
+								<div onclick="getTest(22)">22</div>
+								<div onclick="getTest(23)">23</div>
+								<div onclick="getTest(24)">24</div>
+								<div onclick="getTest(25)">25</div>
+								<div onclick="getTest(26)">26</div>
+								<div onclick="getTest(27)">27</div>
+								<div onclick="getTest(28)">28</div>
+								<div onclick="getTest(29)">29</div>
+								<div onclick="getTest(30)">30</div>
+								<div onclick="getTest(31)">31</div>
+								<div onclick="getTest(32)">32</div>
+								<div onclick="getTest(33)">33</div>
+								<div onclick="getTest(34)">34</div>
+								<div onclick="getTest(35)">35</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
 		<div id="main">
-			<!-- -->
+			
 			<div id="result">
 				<div>
 					<form>
 						<div id="timer">20m:00s</div>
-						<div id="vyhodnotit" class="button" onclick="eval()"><span>Výsledok</span></div>
-						<textarea readonly name="result"  id="res"cols="20" rows="2"></textarea>
-						
+						<div id="vyhodnotit" class="button" onclick="eval()">
+							<span>Výsledok</span>
+						</div>
+						<textarea readonly name="result" id="res" cols="20" rows="2"></textarea>
+
 					</form>
 				</div>
 			</div>
 			<div id="data"></div>
 		</div>
-		<div id="footer"><div class="footerContent">footer content<div onclick="topFunction()" id="toTheTopBtn" class="button"title="Go to top">Top</div></div></div>
+		<div id="footer">
+			<div class="footerContent">
+				footer content
+				<div onclick="topFunction()" id="toTheTopBtn" class="button"
+					title="Go to top">Top</div>
+			</div>
+		</div>
 		<!-- -->
 		<div id="res"></div>
 
