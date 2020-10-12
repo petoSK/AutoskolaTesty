@@ -122,16 +122,13 @@ body {
 #username{
 	grid-column: 1/2;
 	float:left;
-	border: 1px solid red;
 }
 #logoutButton{
 	grid-column: 2/3;
 float:left;
-border: 1px solid red;
 }
 #loginButton{
 	float:left;
-	border: 1px solid red;
 }
 
 #menu {

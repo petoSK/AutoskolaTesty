@@ -51,10 +51,10 @@ function home(){
 function saveResult(user,test,points,passed){
 	
 	if(loggedUser!=""){
-	var currTest =new testResult(user,test,points,passed);
+		let currTest =new testResult(user,test,points,passed);
 	console.log(currTest);
-	var json = JSON.stringify(currTest);
-	var xhttp = new XMLHttpRequest();
+	let json = JSON.stringify(currTest);
+	let xhttp = new XMLHttpRequest();
 	xhttp.open("POST", "http://localhost:8080/autoskola/webapi/resources/saveResult",
 			true);
 	xhttp.setRequestHeader("Content-type", "application/json");
@@ -76,10 +76,10 @@ function getOneQuestion(i){
 	console.log("getOneQuestion "+i)
 	clearInterval(time);
 	document.getElementById("timer").innerHTML = "20m:00s";
-	var adr="http://localhost:8080/autoskola/webapi/resources/getQuestion"
-		var method="POST";
-	var obj;
-	var xhttp = new XMLHttpRequest();
+	let adr="http://localhost:8080/autoskola/webapi/resources/getQuestion"
+		let method="POST";
+	let obj;
+	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			 obj = JSON.parse(this.responseText);	
@@ -100,9 +100,9 @@ function testResult(user,test,points,passed){
 	this.passed=passed;
 }
 function checkCookies(){
-	var adr="http://localhost:8080/autoskola/webapi/resources/listCookies"
-		var method="GET";
-	var str="";
+	let adr="http://localhost:8080/autoskola/webapi/resources/listCookies"
+		let method="GET";
+	let str="";
 	sendRequest(str,method,adr);
 }
 function makeList() {
@@ -112,12 +112,12 @@ function makeList() {
 	}
 
 	for (var j = 1; j < 36; j++) {
-		var newDiv = document.createElement("div");
+		let newDiv = document.createElement("div");
 		newDiv.setAttribute("class", "testDropdown");
 		newDiv.setAttribute("onclick", "getTest(" + j + ")");
-		var text = document.createTextNode(j);
+		let text = document.createTextNode(j);
 		newDiv.appendChild(text);
-		var element = document.getElementById("tests").appendChild(newDiv);
+		let element = document.getElementById("tests").appendChild(newDiv);
 	}
 	document.getElementsByClassName("testDropdown").onmouseover = function() {
 		this.style.backgroundColor = "#ddd";
@@ -125,9 +125,9 @@ function makeList() {
 }
 
 function login(){	
-	var method="POST";
-	var adr="http://localhost:8080/autoskola/webapi/resources/userLogin";
-	var s=document.getElementById("username");
+	let method="POST";
+	let adr="http://localhost:8080/autoskola/webapi/resources/userLogin";
+	let s=document.getElementById("username");
 	
 	if(s.value.length>2){
 		console.log(s.value.length)
@@ -158,16 +158,16 @@ function logout(){
 			document.getElementById("username").placeholder="enter user name";
 	document.getElementById("username").value="";
 	document.getElementById("welcome").style.display="none";
-	var adr="http://localhost:8080/autoskola/webapi/resources/userLogout"
-		var method="GET";
-	var str="";
+	let adr="http://localhost:8080/autoskola/webapi/resources/userLogout"
+		let method="GET";
+	let str="";
 	sendText(method,adr,str);
 	
 }	
 	
 	function sendText(method,adr,str) {
 			console.log("method "+method+"\n adr "+adr+"\n str "+str)
-		var xhttp = new XMLHttpRequest();
+		let xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				obj = this.responseText;	
@@ -180,26 +180,20 @@ function logout(){
 	}
 	
 function eval() {
-	var hodnotenie="";
-	if(test!=0){                                                              // 1-12
-																				// za 2
-																				// body
-	clearInterval(time);													// 13,14,15
-																			// za 1
-																			// bod
-	console.log(spravneOdpovede);											// 16-23
-																			// za 2
-																			// body
-	console.log(odpovede);													// 24-27
-																			// za 3
-																			// body
-	var spravne=[];
-	var nespravne=[];
-	var dobreCoun=0;
-	var zleCount=0;
-	var body=0;
-	var passed="false";
-	for(var i=0;i<27;i++){
+	let hodnotenie="";
+	if(test!=0){    /* 1-12 za 2 body; 16-23 za 2 body; 24-27 za 3 body	*/																		// 13,14,15 za 1 bod
+																			 
+	clearInterval(time);													 																		 																		
+	console.log(spravneOdpovede);											 																																		 
+	console.log(odpovede);													 
+																																					 
+	let spravne=[];
+	let nespravne=[];
+	let dobreCoun=0;
+	let zleCount=0;
+	let body=0;
+	let passed="false";
+	for(let i=0;i<27;i++){
 		
 		if(spravneOdpovede[i]==odpovede[i]){
 			if(i<=11) body=body+2;
@@ -227,13 +221,13 @@ function eval() {
 	else document.getElementById("res").value = "Najprv zrob test ;)"
 }
 function timer() {
-	var distance = countDownDate - new Date().getTime();            // ziskame
+	let distance = countDownDate - new Date().getTime();            // ziskame
 																	// aktualny
 																	// cas
-	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));    // vypocitame
+	let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));    // vypocitame
 																				// aktualne
 																				// minuty
-	var seconds = Math.floor((distance % (1000 * 60)) / 1000);             // //vypocitame
+	let seconds = Math.floor((distance % (1000 * 60)) / 1000);             // //vypocitame
 																			// aktualne
 																			// sekundy
 	document.getElementById("timer").innerHTML = minutes + "m:" + seconds	
@@ -266,7 +260,7 @@ function previousTest(){
 }
 function randomTest(){
 	console.log("random test called")
-var r=Math.floor(Math.random() * 35);
+let r=Math.floor(Math.random() * 35);
 getTest(r);
 }
 function getTest(n) {
@@ -284,7 +278,7 @@ function getTest(n) {
 	clearInterval(time);
 	time = setInterval(timer, 1000);
 
-	for (var i = 0; i < 27; i++) {
+	for (let i = 0; i < 27; i++) {
 		odpovede[i] = "";
 	}
 	const myNode = document.getElementById("data");
@@ -295,20 +289,20 @@ function getTest(n) {
 	method = "POST";
 
 	test = n;
-	var newDiv = document.createElement("div");
+	let newDiv = document.createElement("div");
 	newDiv.setAttribute("class", "cisloTestu");
-	var text = document.createTextNode("Test č. " + test);
+	let text = document.createTextNode("Test č. " + test);
 	newDiv.appendChild(text);
-	var element = document.getElementById("data").appendChild(newDiv);
+	let element = document.getElementById("data").appendChild(newDiv);
 	sendRequest(test,method,adr);
 }
 
 
 function sendRequest(str,method,adr) {
-	var xhttp = new XMLHttpRequest();
+	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			var obj = JSON.parse(this.responseText);	
+			let obj = JSON.parse(this.responseText);	
 			if(test!="")displayTest(obj);		
 		}
 	}
@@ -319,23 +313,23 @@ function sendRequest(str,method,adr) {
 }
 
 function displayTest(obj) {
-	var i = 1;
-	var file = "";
+	let i = 1;
+	let file = "";
 	document.getElementById("next").style.display="block";
 	document.getElementById("previous").style.display="block";
 	document.getElementById("dobreZle").style.display="none";
-	for ( var k in obj) {
+	for ( let k in obj) {
 		file = "images/" + test + "_" + i + ".png";
 		document.getElementById("data").style.display="initial";
 		spravneOdpovede.push(obj[k].answer)
 
-		var newDiv = document.createElement("div");
+		let newDiv = document.createElement("div");
 		newDiv.setAttribute("class", "otazka");
-		var text = document.createTextNode(obj[k].question);
+		let text = document.createTextNode(obj[k].question);
 		newDiv.appendChild(text);
-		var element = document.getElementById("data").appendChild(newDiv);
+		let element = document.getElementById("data").appendChild(newDiv);
 		if (i >= 16) {
-			var newImg = document.createElement("img");
+			let newImg = document.createElement("img");
 			newImg.setAttribute("src", file);
 			if (i >= 24)
 				newImg.setAttribute("class", "crossroad");
@@ -362,8 +356,8 @@ function displayTest(obj) {
 		text = document.createTextNode(obj[k].optionC);
 		newDiv.appendChild(text);
 		element = document.getElementById("data").appendChild(newDiv);
-		var items = document.getElementsByClassName("abc");
-		for (var j = 0; j < items.length; j++) {
+		let items = document.getElementsByClassName("abc");
+		for (let j = 0; j < items.length; j++) {
 			items[j].addEventListener("click", logAnswer);
 		}
 		i++;
@@ -371,11 +365,10 @@ function displayTest(obj) {
 }
 
 function logAnswer() {
-	var id = this.id;
-	var cisloOtazky = "";
-	var l = 0;
-	for (l = 0; l < id.length - 2; l++) { // zisti cislo otazky , na kt som
-		// odpovedal
+	let id = this.id;
+	let cisloOtazky = "";
+	let l = 0;
+	for (l = 0; l < id.length - 2; l++) { // zisti cislo otazky , na kt som odpovedal
 		cisloOtazky = "";
 		if (id.charAt(l) == ("_")) {
 			cisloOtazky = cisloOtazky + id.charAt(l + 1);
@@ -389,66 +382,47 @@ function logAnswer() {
 		}
 	}
 	var odpoved = id.charAt(id.length - 1);
-
 	checkIfAnswered(cisloOtazky, odpoved);
-
 }
 
 function checkIfAnswered(q, o, id) {
-// console.log("checkIfAnswered " + q + " " + o + " " + s)
-	var e = false;
-	// for (var i = 0; i < 27; i++) {
+	let e = false;
 	if (odpovede[q - 1] == "") {
-		
 		odpovede[q - 1] = o;
-		document.getElementById(test + "_" + q + o).style.color = "#19FF19"; // novej
-		// odpovedi
-		// dame
-		// zelenu
-		// farbu
+		document.getElementById(test + "_" + q + o).style.color = "#19FF19"; // novej odpovedi dame zelenu farbu
 	} else {
-		document.getElementById(test + "_" + q + odpovede[q - 1]).style.color = "#B3F2FF"; // starej
-		// odpovedi
-		// dame
-		// povodnu
-		// farbu
-		document.getElementById(test + "_" + q + o).style.color = "#19FF19"; // novej
-		// odpovedi
-		// dame
-		// zelenu
-		// farbu
+		document.getElementById(test + "_" + q + odpovede[q - 1]).style.color = "#B3F2FF"; // starej odpovedi dame povodnu farbu
+		document.getElementById(test + "_" + q + o).style.color = "#19FF19"; // novej odpovedi dame zelenu farbu
 		odpovede[q - 1] = o;
-
 	}
-	// console.log(odpovede);
 }
 
-mybutton = document.getElementById("toTheTopBtn");
+mybtn = document.getElementById("toTheTopBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
 
-function scrollFunction() {
+
+
+window.onscroll = function() {scroll()};
+
+function scroll() {
 if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
- mybutton.style.display = "block";
+	mybtn.style.display = "block";
 } else {
- mybutton.style.display = "none";
+	mybtn.style.display = "none";
 }
 }
-
-// When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-document.body.scrollTop = 0; // For Safari
-document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+document.body.scrollTop = 0; 
+document.documentElement.scrollTop = 0; 
 }
 
 function vyberOtazok(idO){
 
 	console.log("typ otazky "+idO);
-	var typOtazky=idO;
-	var s="";
-var checkBoxes=document.getElementsByClassName("otazkaInput");	
-for(var i=0;i<checkBoxes.length;i++){
+	let typOtazky=idO;
+	let s="";
+	let checkBoxes=document.getElementsByClassName("otazkaInput");	
+for(let i=0;i<checkBoxes.length;i++){
 	checkBoxes[i].checked=false;	
 }
 	document.getElementById(typOtazky).checked=true;	
@@ -456,25 +430,25 @@ nahodneOtazky(typOtazky);
 }
 
 function nahodneOtazky(typOtazky){
-	
-	var cisloOtazky=cisloOtazky;
-	  var b=0;
-	  var e=0;
+console.log("nahodneOtazky "+typOtazky)
+	let cisloOtazky=5;
+	let b=0;
+	let e=0;
 	dobre="0";
 	zle="0";
 	home();
 	document.getElementById("dobreZle").style.display="block";
 	
-	var znacky=true;
-	var krizovatky=true;
-	var zakon=true;
+	let znacky=true;
+	let krizovatky=true;
+	let zakon=true;
 	// logika pre vybratie otazky konkretneho typu (krizovatky,znacky,....) //id
 	// 1-945
 	// zakon za 2 body //1-12
 	// zakon za 1 bod //13 14 15
 	// znacky //16 17 18 19 20 21 22 23
     // krizovatky //24 25 26 27
-	
+	/*
 	switch(typOtazky){
 	case "zakon":{
 		tOtazky=[];
@@ -503,7 +477,7 @@ function nahodneOtazky(typOtazky){
 		e=e+27;
 	// console.log(tOtazky+"\n"+"\n"+tOtazky.length)
 		}
-	}
+	}*/
 	document.getElementById("dobreZle").innerHTML="dobre : "+dobre+" zle: "+zle;
 	nextq();
 }
@@ -511,15 +485,15 @@ function nahodneOtazky(typOtazky){
 function displayQ(obj,i){
 	
 	odpoved =obj.odpoved; 
-	var newDiv;
-	var text;
+	let newDiv;
+	let text;
 	document.getElementById("data").innerHTML="";
-	var element1 = document.getElementById("img");
+	let element1 = document.getElementById("img");
 	 if(element1!=null) element1.classList.remove("img");
-	 var element2 = document.getElementById("crossroad");
+	 let element2 = document.getElementById("crossroad");
 	 if(element2!=null) element2.classList.remove("crossroad");
 	 
-	 var elements = document.getElementsByClassName("abc");
+	 let elements = document.getElementsByClassName("abc");
 	    while(elements.length > 0){
 	        elements[0].parentNode.removeChild(elements[0]);
 	    }
@@ -554,7 +528,7 @@ function displayQ(obj,i){
 	if ((obj.otazka_id>=16&&obj.otazka_id<=27) || obj.otazka_id%27 >= 16||obj.otazka_id%27 == 0) { 
 		
 		
-		var newImg = document.createElement("img");
+		let newImg = document.createElement("img");
 		newImg.setAttribute("src", file);
 		newImg.setAttribute("id", "img");
 		newImg.setAttribute("class", "img");
@@ -594,8 +568,8 @@ function displayQ(obj,i){
 	 * console.log("\n"+obj.moznostC); console.log("\n"+obj.odpoved);
 	 */
 	
-	var items = document.getElementsByClassName("abc");
-	for (var j = 0; j < items.length; j++) {
+	let items = document.getElementsByClassName("abc");
+	for (let j = 0; j < items.length; j++) {
 		items[j].addEventListener("click", checkAnswer);
 	}
 	
@@ -612,8 +586,8 @@ function checkAnswer(ans){
 	console.log("tvoja odpoved: "+this.innerHTML.substring(0,1)+" :: Spravna odpoved: "+odpoved)
 	// 80FF80
 	// document.getElementsByClassName("abc").style.backgroundColor="#1D2228";
-	var items = document.getElementsByClassName("abc");
-	for (var j = 0; j < items.length; j++) {
+	let items = document.getElementsByClassName("abc");
+	for (let j = 0; j < items.length; j++) {
 		items[j].removeEventListener("click", checkAnswer);
 		items[j].style.background="#1D2228";
 	
@@ -643,7 +617,7 @@ function checkAnswer(ans){
 
 function nextq(){
 	console.log("tOtazky.length: "+tOtazky.length)
-	var rnd=Math.floor(Math.random() * tOtazky.length);
+	let rnd=Math.floor(Math.random() * tOtazky.length);
 	
 	getOneQuestion(tOtazky[rnd]);
 	tOtazky.splice(rnd,1);
