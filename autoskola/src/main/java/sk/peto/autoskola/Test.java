@@ -1,9 +1,5 @@
 package sk.peto.autoskola;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.sql.Blob;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement

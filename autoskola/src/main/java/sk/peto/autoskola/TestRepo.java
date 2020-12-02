@@ -1,20 +1,9 @@
 package sk.peto.autoskola;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
-import java.security.KeyStore.ProtectionParameter;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,14 +12,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import javax.imageio.stream.FileImageInputStream;
 
 
 public class TestRepo {
-	 private static final long serialVersionUID = 1L;
+	 @SuppressWarnings("unused")
+	private static final long serialVersionUID = 1L;
 	Test nTest = new Test();
 	TestResult tr=new TestResult();
 	Otazka ot = new Otazka();
